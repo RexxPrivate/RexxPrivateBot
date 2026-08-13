@@ -79,8 +79,10 @@ def analyze_market():
             
             log_signal_to_db(timestamp, name, current_price, trend_score, liquidity_score, confidence, status, reason)
             
+            # Fixed backslash warning inside f-string
+            price_str = f"${current_price:.2f}"
             report += f"🔹 *{name}* (`{symbol}`)\n"
-            report += f"💰 Price: `\${current_price:.2f}`\n"
+            report += f"💰 Price: `{price_str}`\n"
             report += f"📊 *Confidence*: `{confidence}%`\n"
             report += f"⚡ *Status*: {status}\n"
             report += f"📝 *Reasoning*:\n  • {reason}\n\n"
@@ -91,7 +93,7 @@ def analyze_market():
 
 if __name__ == "__main__":
     init_database()
-    send_telegram_alert("🚀 *Rexx Private Intelligence Engine v14* Initialized on Cloud!")
+    send_telegram_alert("🚀 *Rexx Private Intelligence Engine v14.1* Cleaned & Running!")
     
     # 24/7 Background Continuous Loop
     while True:
@@ -102,3 +104,4 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Engine Error: {e}")
             time.sleep(60)
+        
