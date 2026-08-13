@@ -8,8 +8,8 @@ import yfinance as yf
 # SMC + ICT + FRVP + Killzones Integrated
 # ==========================================
 
-TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
-TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE"
+TELEGRAM_BOT_TOKEN = "8680396608:AAEMoUlMz4_kc9H-2E8n7ig1UwKxa2F-IrA"
+TELEGRAM_CHAT_ID = "8619871225"
 
 def send_telegram_alert(message):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
@@ -25,7 +25,7 @@ def send_telegram_alert(message):
         print(f"Telegram Error: {e}")
 
 def analyze_market():
-    # Example fetching NASDAQ & Gold data for institutional analysis
+    # Market Analysis Logic
     tickers = ["^IXIC", "GC=F"]
     report = "🚨 *REXX CORE: Level 13 Market Scan* 🚨\n\n"
     
@@ -47,9 +47,9 @@ if __name__ == "__main__":
     while True:
         try:
             analyze_market()
-            # Loop runs every 15 minutes to scan institutional liquidity
+            # Bot 15 minute ke interval par scan karega
             time.sleep(900)
         except Exception as e:
             print(f"Engine Loop Error: {e}")
             time.sleep(60)
-  
+            
